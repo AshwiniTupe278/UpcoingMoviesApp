@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name"> Upcoming Movies Application</string>
+    <string name="action_info">Information</string>
+    <string name="upcoming_title">Upcoming Movies</string>
+</resources>
