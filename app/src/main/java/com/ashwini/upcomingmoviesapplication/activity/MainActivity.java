@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+       initialisation();
+    }
+
+    private void initialisation() {
         textViewToolbar = findViewById(R.id.toolbar_title);
         textViewToolbar.setText(R.string.upcoming_title);
 

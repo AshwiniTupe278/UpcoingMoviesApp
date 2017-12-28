@@ -6,7 +6,7 @@ package com.ashwini.upcomingmoviesapplication.model;
 
 public class MovieModel {
 
-    String movieName,movieReleaseDate;
+    String movieName,movieReleaseDate,movieId;
 
     boolean movieAdultFlag;
 
@@ -14,6 +14,14 @@ public class MovieModel {
         this.movieName = movieName;
         this.movieReleaseDate = movieReleaseDate;
         this.movieAdultFlag = movieAdultFlag;
+    }
+
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
     }
 
     public String getMovieName() {
