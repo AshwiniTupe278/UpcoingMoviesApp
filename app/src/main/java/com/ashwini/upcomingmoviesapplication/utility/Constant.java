@@ -10,4 +10,6 @@ public class Constant {
 
     public static final String UPCOMING_MOVIES_URL  = MAIN_URL +"upcoming"+API_KEY;
 
+    public static final String MOVIE_POSTER_IMAGE = "https://image.tmdb.org/t/p/w185";
+
 }

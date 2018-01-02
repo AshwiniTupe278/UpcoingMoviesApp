@@ -1,17 +1,23 @@
 package com.ashwini.upcomingmoviesapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashwini.upcomingmoviesapplication.R;
 import com.ashwini.upcomingmoviesapplication.activity.MainActivity;
+import com.ashwini.upcomingmoviesapplication.activity.MovieDetailsActivity;
 import com.ashwini.upcomingmoviesapplication.model.MovieModel;
+import com.ashwini.upcomingmoviesapplication.utility.Constant;
 import com.squareup.picasso.Picasso;
 
 import java.net.URI;
@@ -40,8 +46,9 @@ public class MovieDataAdapter extends RecyclerView.Adapter<MovieDataAdapter.Movi
 
     @Override
     public void onBindViewHolder(MovieDataHolder holder, int position) {
-        MovieModel movieObject = movieList.get(position);
+        final MovieModel movieObject = movieList.get(position);
         holder.tvMovieName.setText(movieObject.getMovieName());
+
         holder.tvReleaseDate.setText(movieObject.getMovieReleaseDate());
 
         if (movieObject.isMovieAdultFlag())
@@ -52,11 +59,20 @@ public class MovieDataAdapter extends RecyclerView.Adapter<MovieDataAdapter.Movi
         {
             holder.tvAdultFlag.setText("(U/A)");
         }
-        Uri uri = Uri.parse("https://image.tmdb.org/t/p/w185//eKi8dIrr8voobbaGzDpe8w0PVbC.jpg");
 
-        Picasso.with(mContext).load(uri).fit().centerCrop().into(holder.ivMovieImage);
+        String imagePath = Constant.MOVIE_POSTER_IMAGE + movieObject.getPosterPath();
+        Log.d("PosterPath",imagePath);
+        Picasso.with(mContext).load(imagePath).resize(200,200).into(holder.ivMovieImage);
 
-
+        holder.cardMovieInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent movieDetailsIntent = new Intent(mContext, MovieDetailsActivity.class);
+                movieDetailsIntent.putExtra("MovieTitle",movieObject.getMovieName());
+                movieDetailsIntent.putExtra("MovieId",movieObject.getMovieId());
+                mContext.startActivity(movieDetailsIntent);
+            }
+        });
     }
 
     @Override
@@ -68,9 +84,11 @@ public class MovieDataAdapter extends RecyclerView.Adapter<MovieDataAdapter.Movi
 
         TextView tvMovieName,tvReleaseDate,tvAdultFlag;
         ImageView ivMovieImage;
+        CardView cardMovieInfo;
 
         public MovieDataHolder(View itemView) {
             super(itemView);
+            cardMovieInfo = itemView.findViewById(R.id.cardMovieInfo);
             tvMovieName = itemView.findViewById(R.id.tvMovieName);
             tvReleaseDate = itemView.findViewById(R.id.tvReleaseDate);
             tvAdultFlag = itemView.findViewById(R.id.tvAdultFlag);

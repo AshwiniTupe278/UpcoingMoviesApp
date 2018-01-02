@@ -3,4 +3,6 @@
     <string name="action_info">Information</string>
     <string name="upcoming_title">Upcoming Movies</string>
     <string name="textview">TextView</string>
+    <string name="information_title">Information</string>
+    <string name="name"> Developed by \nAshwini Tupe</string>
 </resources>
