@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements OnDataListener {
                     mModel.setMovieAdultFlag(jsonObject.getBoolean("adult"));
                     mModel.setMovieReleaseDate(jsonObject.getString("release_date"));
                     mModel.setPosterPath(jsonObject.getString("poster_path"));
+                    mModel.setMovieId(jsonObject.getString("id"));
                     movieList.add(mModel);
                 }
 
