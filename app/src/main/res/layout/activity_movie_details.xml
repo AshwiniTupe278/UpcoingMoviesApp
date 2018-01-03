@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/white"
     android:layout_height="match_parent"
     tools:context="com.ashwini.upcomingmoviesapplication.activity.MovieDetailsActivity">
     <include
@@ -10,60 +11,104 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/toolbar"/>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/toolbar"
-    android:layout_margin="5sp"
-    android:id="@+id/rlMovieDetails">
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/movieViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:layout_marginBottom="8dp"/>
-
-    <LinearLayout
-        android:id="@+id/sliderDots"
-        android:layout_below="@+id/movieViewPager"
-        android:orientation="horizontal"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/sliderDots"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="15dp"
-        android:background="#F5F5F5"
-        android:clipToPadding="false"
-        android:elevation="30dp"
-        android:gravity="center_vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="5dp"
+        android:id="@+id/rlMovieDetails">
 
-        <TextView
-            android:id="@+id/tv_MovieTitle"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/movieViewPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:textSize="18sp"
-            />
+            android:layout_height="190dp"
+            android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:id="@+id/tv_MovieOverview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/sliderDots"
+            android:layout_below="@+id/movieViewPager"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/tv_MovieTitle"
-            android:text="TextView" />
-    </RelativeLayout>
+            android:layout_below="@+id/sliderDots"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_border"
+            android:clipToPadding="false"
+            android:elevation="20dp">
+
+
+            <TextView
+                android:id="@+id/tv_movieTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:textAllCaps="true"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginLeft="7sp"
+                android:layout_marginRight="7sp"
+
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="TextView" />
+            <View
+                android:id="@+id/tvBelowMovieTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_movieTitle"
+                android:background="#747070" />
+
+            <TextView
+                android:id="@+id/tv_movieOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginLeft="7sp"
+                android:layout_marginRight="7sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvBelowMovieTitle"
+                android:ellipsize="end"
+                android:lines="5"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/tvBelowMovieOverview"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/tv_movieOverview"
+                android:background="@color/borderColor" />
+
+            <RatingBar
+                android:id="@+id/ratingBar2"
+                style="@style/customRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:isIndicator="true"
+                android:clickable="false"
+                android:layout_marginLeft="7sp"
+                android:layout_marginRight="7sp"
+                android:numStars="5"
+                android:rating="2.0"
+                android:stepSize="1.0" />
+
+
+        </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>
