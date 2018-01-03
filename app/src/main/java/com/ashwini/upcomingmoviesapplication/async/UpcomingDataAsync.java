@@ -9,6 +9,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.ashwini.upcomingmoviesapplication.activity.MovieDetailsActivity;
 import com.ashwini.upcomingmoviesapplication.interfaces.OnDataListener;
 import com.ashwini.upcomingmoviesapplication.interfaces.OnMovieDetailsListener;
 import com.ashwini.upcomingmoviesapplication.utility.Constant;
@@ -56,6 +57,27 @@ public class UpcomingDataAsync {
             public void onErrorResponse(VolleyError error) {
                 Log.d("response",error.toString());
                 listener.onMovieDetailsListener(error.toString(),"Images",false);
+            }
+        });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        Volley.newRequestQueue(mContext).add(request);
+    }
+
+    public void getMovieDetails(Context mContext, String movieId, final OnMovieDetailsListener listener) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Constant.MAIN_URL+movieId+Constant.API_KEY, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("response",response.toString());
+                listener.onMovieDetailsListener(response.toString(),"Details",true);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("response",error.toString());
+                listener.onMovieDetailsListener(error.toString(),"Details",false);
             }
         });
 
