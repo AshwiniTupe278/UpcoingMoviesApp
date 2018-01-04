@@ -2,10 +2,12 @@ package com.ashwini.upcomingmoviesapplication.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.ashwini.upcomingmoviesapplication.R;
+import com.ashwini.upcomingmoviesapplication.utility.ConnectionManager;
 
 public class AboutInfoActivity extends AppCompatActivity {
 

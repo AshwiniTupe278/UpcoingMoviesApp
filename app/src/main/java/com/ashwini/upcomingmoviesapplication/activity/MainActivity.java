@@ -17,6 +17,7 @@ import com.ashwini.upcomingmoviesapplication.adapter.MovieDataAdapter;
 import com.ashwini.upcomingmoviesapplication.async.UpcomingDataAsync;
 import com.ashwini.upcomingmoviesapplication.interfaces.OnDataListener;
 import com.ashwini.upcomingmoviesapplication.model.MovieModel;
+import com.ashwini.upcomingmoviesapplication.utility.ConnectionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnDataListener {
    private ArrayList<MovieModel> movieList;
    private RecyclerView movieRecyclerView;
    private MovieDataAdapter movieAdapter;
+   private ConnectionManager connectionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements OnDataListener {
     }
 
     private void initialisation() {
+
+        connectionManager = new ConnectionManager();
+
         textViewToolbar = findViewById(R.id.toolbar_title);
         textViewToolbar.setText(R.string.upcoming_title);
 
@@ -64,7 +69,13 @@ public class MainActivity extends AppCompatActivity implements OnDataListener {
     }
 
     private void callUpcomingMovieData() {
-        new UpcomingDataAsync().getUpcomingMoviesData(MainActivity.this,this);
+        if (connectionManager.isNetworkConnected(mContext)) {
+            new UpcomingDataAsync().getUpcomingMoviesData(MainActivity.this, this);
+        }
+        else
+        {
+            Toast.makeText(mContext, R.string.INTERNET_CONNECTION_ERROR,Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

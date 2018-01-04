@@ -16,6 +16,7 @@ import com.ashwini.upcomingmoviesapplication.R;
 import com.ashwini.upcomingmoviesapplication.adapter.ViewPagerAdapter;
 import com.ashwini.upcomingmoviesapplication.async.UpcomingDataAsync;
 import com.ashwini.upcomingmoviesapplication.interfaces.OnMovieDetailsListener;
+import com.ashwini.upcomingmoviesapplication.utility.ConnectionManager;
 import com.ashwini.upcomingmoviesapplication.utility.Constant;
 
 import org.json.JSONArray;
@@ -58,8 +59,6 @@ public class MovieDetailsActivity extends AppCompatActivity implements ViewPager
 
         viewPagerMovieImages = findViewById(R.id.movieViewPager);
         sliderDotsPanel = findViewById(R.id.sliderDots);
-
-        callDataParsing();
 
         adapter = new ViewPagerAdapter(mContext, movieImageList);
         viewPagerMovieImages.setAdapter(adapter);
