@@ -60,6 +60,8 @@ public class MovieDetailsActivity extends AppCompatActivity implements ViewPager
         viewPagerMovieImages = findViewById(R.id.movieViewPager);
         sliderDotsPanel = findViewById(R.id.sliderDots);
 
+        callDataParsing();
+
         adapter = new ViewPagerAdapter(mContext, movieImageList);
         viewPagerMovieImages.setAdapter(adapter);
 
@@ -129,8 +131,6 @@ public class MovieDetailsActivity extends AppCompatActivity implements ViewPager
             JSONObject object = new JSONObject(message);
             tv_movieOverview.setText(object.getString("overview"));
             tv_movieTitle.setText(object.getString("title"));
-//            movieRating.setRating(Float.valueOf(object.getString("popularity")));
-
             float rating =( Float.valueOf(object.getString("popularity")) *5) / 1000;
             movieRating.setRating(rating);
             Log.d("Ratimg",String.valueOf(rating));
