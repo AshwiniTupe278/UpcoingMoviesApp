@@ -23,10 +23,6 @@ import com.squareup.picasso.Picasso;
 import java.net.URI;
 import java.util.List;
 
-/**
- * Created by softdotcom-7 on 27/12/17.
- */
-
 public class MovieDataAdapter extends RecyclerView.Adapter<MovieDataAdapter.MovieDataHolder> {
 
     private Context mContext;

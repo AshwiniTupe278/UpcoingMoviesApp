@@ -1,8 +1,5 @@
 package com.ashwini.upcomingmoviesapplication.model;
 
-/**
- * Created by softdotcom-7 on 27/12/17.
- */
 
 public class MovieModel {
 

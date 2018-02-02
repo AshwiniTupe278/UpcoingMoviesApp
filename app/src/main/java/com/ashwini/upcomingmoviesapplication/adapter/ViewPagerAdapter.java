@@ -14,10 +14,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by softdotcom-7 on 2/1/18.
- */
-
 public class ViewPagerAdapter extends PagerAdapter {
 
     private Context mContext;

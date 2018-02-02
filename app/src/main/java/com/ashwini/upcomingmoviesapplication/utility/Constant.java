@@ -1,8 +1,5 @@
 package com.ashwini.upcomingmoviesapplication.utility;
 
-/**
- * Created by softdotcom-7 on 27/12/17.
- */
 
 public class Constant {
     public static final String MAIN_URL = "https://api.themoviedb.org/3/movie/";

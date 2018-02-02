@@ -39,6 +39,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements ViewPager
     private ViewPagerAdapter adapter;
     private TextView tv_movieTitle, tv_movieOverview;
     private RatingBar movieRating;
+    private ConnectionManager connectionManager ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,8 @@ public class MovieDetailsActivity extends AppCompatActivity implements ViewPager
     }
 
     private void initialisation() {
+
+        connectionManager = new ConnectionManager();
 
         Bundle bundle = getIntent().getExtras();
         MOVIE_ID = bundle.getString("MovieId");
@@ -88,11 +91,23 @@ public class MovieDetailsActivity extends AppCompatActivity implements ViewPager
     }
 
     private void callMovieDetailsDataParsing() {
-        new UpcomingDataAsync().getMovieDetails(mContext, MOVIE_ID, this);
+        if (connectionManager.isNetworkConnected(mContext)) {
+            new UpcomingDataAsync().getMovieDetails(mContext, MOVIE_ID, this);
+        }
+        else
+        {
+            Toast.makeText(mContext, R.string.INTERNET_CONNECTION_ERROR,Toast.LENGTH_LONG).show();
+        }
     }
 
     private void callDataParsing() {
-        new UpcomingDataAsync().getImagesofUpcomingMovie(mContext, MOVIE_ID, this);
+        if (connectionManager.isNetworkConnected(mContext)) {
+            new UpcomingDataAsync().getImagesofUpcomingMovie(mContext, MOVIE_ID, this);
+        }
+        else
+        {
+            Toast.makeText(mContext, R.string.INTERNET_CONNECTION_ERROR,Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
